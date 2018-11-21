@@ -27,6 +27,13 @@ public class DataService {
 
     @Transactional
     public Collection<Customer> getAll() {
+
+        for (Customer customer : this.customerRepository.findAll() ) {
+
+            System.out.println(customer.getName());
+
+        }
+
         return new ArrayList<>(this.customerRepository.findAll());
     }
 
