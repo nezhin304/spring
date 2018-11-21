@@ -1,4 +1,4 @@
-package com.infopulse.init;
+package com.organization.init;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -24,7 +24,7 @@ public class SpringInit implements WebApplicationInitializer {
 
     private AnnotationConfigWebApplicationContext getContext() {
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.setConfigLocation("com.infopulse.config");
+        context.setConfigLocation("com.organization.config");
         return context;
     }
 

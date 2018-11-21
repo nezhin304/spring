@@ -1,35 +1,33 @@
-package com.infopulse.service;
+package com.organization.service;
 
-import com.infopulse.entity.Client;
-import com.infopulse.repository.ClientRepository;
+import com.organization.entity.Customer;
+import com.organization.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 @Service
 public class DataService {
 
     @Autowired
-    ClientRepository clientRepository;
+    CustomerRepository customerRepository;
 
     @Transactional
-    public void createClient(String name){
-        Client client = new Client();
-        client.setName(name);
-        this.clientRepository.save(client);
+    public void createCustomer(String name, String surname, String phone) {
+        Customer customer = new Customer();
+        customer.setName(name);
+        customer.setSurname(surname);
+        customer.setPhone(phone);
+        this.customerRepository.save(customer);
     }
 
     @Transactional
-    public List<String> getAll(){
-        return
-                this.clientRepository.findAll().stream()
-                .map(client -> client.getName())
-                .collect(Collectors.toList());
+    public Collection<Customer> getAll() {
+        return new ArrayList<>(this.customerRepository.findAll());
     }
-
 
 }

@@ -1,4 +1,4 @@
-package com.infopulse.config;
+package com.organization.config;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
@@ -19,9 +19,9 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.infopulse")
+@ComponentScan("com.organization")
 @PropertySource("classpath:app.properties")
-@EnableJpaRepositories("com.infopulse.repository")
+@EnableJpaRepositories("com.organization.repository")
 public class DataConfig {
     private static final String PROP_DATABASE_DRIVER = "db.driver";
     private static final String PROP_DATABASE_PASSWORD = "db.password";

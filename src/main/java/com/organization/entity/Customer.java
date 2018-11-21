@@ -9,14 +9,14 @@ import java.util.Collection;
 @Entity
 @Table(name = "customers")
 public class Customer {
-	
-	@Id
+
+    @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
     @Column(name = "name")
-	private String name;
+    private String name;
 
     @Column(name = "surname")
     private String surname;
@@ -24,10 +24,10 @@ public class Customer {
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 
-    @OneToMany(mappedBy = "cards", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Collection<Card> cards;
+//    @OneToMany(mappedBy = "cards", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private Collection<Card> cards;
 
-    Customer(){
+    public Customer() {
 
     }
 

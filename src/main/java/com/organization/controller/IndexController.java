@@ -1,14 +1,15 @@
-package com.infopulse.controller;
+package com.organization.controller;
 
-import com.infopulse.service.DataService;
+import com.organization.entity.Customer;
+import com.organization.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import java.util.Collection;
 
 @Controller
 @RequestMapping("/")
@@ -21,26 +22,28 @@ public class IndexController {
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
-        mav.addObject("action", "/clients");
+        mav.addObject("action", "/customers");
         return mav;
     }
-    @RequestMapping(value="/clients", method = RequestMethod.POST)
-    public ModelAndView createClient(@RequestParam("name") String name){
-      // String name= request.getParameter("name");
-       this.dataService.createClient(name);
+
+    @RequestMapping(value="/customers", method = RequestMethod.POST)
+    public ModelAndView createCustomer(@RequestParam("name") String name
+            , @RequestParam("surname") String surname
+            , @RequestParam("phone") String phone){
+
+       this.dataService.createCustomer(name, surname, phone);
        ModelAndView mav = new ModelAndView();
        mav.setViewName("ok");
        return mav;
     }
 
-    @RequestMapping(value = "/clients", method = RequestMethod.GET)
-    public ModelAndView getClients() {
-        List<String> names = this.dataService.getAll();
+    @RequestMapping(value = "/customers", method = RequestMethod.GET)
+    public ModelAndView getCustomers() {
+        Collection<Customer> customers = this.dataService.getAll();
         ModelAndView mav = new ModelAndView();
         mav.setViewName("answer");
-        mav.addObject("list", names);
+        mav.addObject("list", customers);
         return mav;
     }
-
 
 }

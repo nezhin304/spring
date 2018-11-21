@@ -1,4 +1,4 @@
-package com.infopulse.config;
+package com.organization.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
