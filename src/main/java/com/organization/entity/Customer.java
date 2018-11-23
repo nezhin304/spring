@@ -4,6 +4,7 @@ package com.organization.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -24,8 +25,8 @@ public class Customer {
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 
-//    @OneToMany(mappedBy = "cards", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private Collection<Card> cards;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Collection<Card> cards = new ArrayList<>();
 
     public Customer() {
 
@@ -61,5 +62,17 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Collection<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(Collection<Card> cards) {
+        this.cards = cards;
+    }
+
+    public void setCard(Card card) {
+        cards.add(card);
     }
 }

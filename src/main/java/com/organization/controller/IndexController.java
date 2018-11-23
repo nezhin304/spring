@@ -1,5 +1,6 @@
 package com.organization.controller;
 
+import com.organization.entity.Card;
 import com.organization.entity.Customer;
 import com.organization.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,13 @@ public class IndexController {
     }
 
     @RequestMapping(value="/customers", method = RequestMethod.POST)
-    public ModelAndView createCustomer(@RequestParam("name") String name
+    public ModelAndView createCustomer(
+              @RequestParam("name") String name
             , @RequestParam("surname") String surname
-            , @RequestParam("phone") String phone){
+            , @RequestParam("phone") String phone
+            , @RequestParam("cardNumber") String cardNumber){
 
-       this.dataService.createCustomer(name, surname, phone);
+       this.dataService.createCustomer(name, surname, phone, cardNumber);
        ModelAndView mav = new ModelAndView();
        mav.setViewName("ok");
        return mav;
