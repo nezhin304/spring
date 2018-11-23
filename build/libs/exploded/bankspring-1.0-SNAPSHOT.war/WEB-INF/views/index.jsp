@@ -5,7 +5,7 @@
 </head>
 <body>
 <form action="${action}" method="POST">
-    Name:&nbsp&nbsp&nbsp&nbsp
+    Name:&nbsp&nbsp&nbsp
     <input type="text" name="name" value=""/>
     <br><br>
     Surname:
@@ -14,7 +14,7 @@
     Phone:&nbsp&nbsp
     <input type="text" name="phone" value=""/>
     <br><br>
-    Card:&nbsp&nbsp&nbsp&nbsp
+    Card:&nbsp&nbsp&nbsp
     <input type="text" name="cardNumber" value=""/>
     <br><br>
     <input type="submit" name="ok" value="send"/>
